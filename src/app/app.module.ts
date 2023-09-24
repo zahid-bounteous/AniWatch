@@ -9,7 +9,15 @@ import {HttpClientModule} from '@angular/common/http';
 import { CardComponent } from './shared/components/card/card.component';
 import { CardListComponent } from './shared/components/card-list/card-list.component';
 import { DetailsComponent } from './shared/components/details/details.component';
+import { RouterModule, Routes } from '@angular/router';
+import { StoreModule } from '@ngrx/store';
+import { myDataReducer } from './state/reducers/data.reducers';
 
+let appRoute: Routes=[
+  {path:"details/:id", component: DetailsComponent},
+  {path:"details/:title",component:DetailsComponent},
+  {path:"**", component: CardComponent}
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,14 +25,17 @@ import { DetailsComponent } from './shared/components/details/details.component'
     FooterComponent,
     CardComponent,
     CardListComponent,
-    DetailsComponent
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({ myData: myDataReducer }),
+    RouterModule.forRoot(appRoute)
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

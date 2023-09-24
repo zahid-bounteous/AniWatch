@@ -18,4 +18,19 @@ describe('DetailsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should initialize data and properties correctly when reponse is false', () => {
+    const mockData = {
+      Response: 'False'
+    };
+
+    spyOn(component['store'], 'select').and.returnValue({
+      subscribe: (callback: Function) => callback(mockData),
+    } as any);
+
+    component.ngOnInit();
+
+    expect(component.data).toEqual(mockData);
+    expect(component.hasResponse).toBeFalse();
+  });
+
 });
