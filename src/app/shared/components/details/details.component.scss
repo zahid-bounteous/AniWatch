@@ -1,0 +1,19 @@
+*{
+  color: black;
+}
+.col{
+  display: flex;
+  align-self: center;
+  word-wrap: break-word;
+  border: solid black;
+  padding: auto;
+  ul{
+    list-style: none;
+
+  }
+  img{
+    height: 50vh;
+    width: 20 vw;
+    border: solid yellow;
+  }
+}

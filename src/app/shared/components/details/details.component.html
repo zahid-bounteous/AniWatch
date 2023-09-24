@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <img src="{{details[6].images.jpg.large_image_url}}" alt="" class="rounded">
+    </div>
+    <div class="col-6">
+      <div>
+        <h1>{{details[0].title}}</h1>
+        <ul>
+          <li>{{details[0].rating}}</li>
+          <li>{{details[0].type}}</li>
+          <li>{{details[0].duration}}</li>
+        </ul>
+        <div class="two-button">
+        <button class="trailer">Watch Trailer</button>
+        <button class="watch">Watch {{details[0].type}}</button>
+        </div>
+        <p>{{details[0].synopsis}}</p>
+      </div>
+    </div>
+    <div class="col ">
+      <span class="details">
+        <h6>Japanese : {{details[0].titles[1].title}}</h6>
+        <h6>Year : {{details[0].year}}</h6>
+        <h6>Episodes :{{details[0].episodes}}</h6>
+        <h6>Duration : {{details[0].duration}}</h6>
+        <h6>Status : {{details[0].status}}</h6>
+        <h6>Season : {{details[0].season}}</h6>
+        <h6>Score : {{details[0].score}}</h6>
+        <div>
+          
+        </div >
+        <h6>Studios : {{details[0].studios[0].name}}</h6>
+        <h6>Producers : {{details[0].producers[0].name}}</h6>
+      </span>
+    </div>
+  </div>
+
+</div>
