@@ -4,6 +4,7 @@ import { DataService } from 'src/app/services/data.service';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
+import { selectMyData, selectMyDataState } from 'src/app/state/selectors/data.selectors';
 
 const mockData=[{
   "mal_id":1,
@@ -169,7 +170,7 @@ describe('DetailComponent', () => {
     service=jasmine.createSpyObj(DataService,['getAnimeData'])
     store = jasmine.createSpyObj(Store, ['select']);
     route = jasmine.createSpyObj('ActivatedRoute', [], {
-    snapshot: { paramMap: { get: (param: string) => 'mock parameter' } },
+    snapshot: { paramMap: { get: (param: string) => 'cowboy' } },
     });
 
     TestBed.configureTestingModule({
@@ -178,25 +179,17 @@ describe('DetailComponent', () => {
     });
     fixture = TestBed.createComponent(DetailComponent);
     component = fixture.componentInstance;
-    // const mockData = {images:{jpg:{large_image_url:''}},studios:[{name:''}],producers:[{name:''}]};
     store.select.and.returnValue(of({ data: mockData }));
-    component.details=mockData
     fixture.detectChanges()
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  // it('should return data from state', () => {
-  //   const state = { data: 'test data' };
-  //   const result = (state: { data: any; }) => state.data;
-  //   expect(result(state)).toEqual('test data');
-  // });
+
   it('should extract a amine data based on title', () => {
-    const mockResponse={data:mockData}
-    // service.getAnimeData();
     component.ngOnInit();
     expect(service.getAnimeData).toHaveBeenCalled();
-    expect(component.details).toEqual(mockResponse.data.find((item) => item.title.toLowerCase().includes('')));
+    expect(component.details).toEqual(mockData[0]);
   });
 });
