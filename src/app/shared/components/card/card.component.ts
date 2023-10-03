@@ -8,12 +8,7 @@ import { selectMyData } from 'src/app/state/selectors/data.selectors';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent {
-  hasResponse(hasResponse: any) {
-    throw new Error('Method not implemented.');
-  }
-  data(data: any) {
-    throw new Error('Method not implemented.');
-  }
+
   public cardBanner:any;
   constructor(private api: DataService,private store:Store){}
   ngOnInit():void{

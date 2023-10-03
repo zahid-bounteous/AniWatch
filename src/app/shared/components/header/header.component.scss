@@ -9,6 +9,9 @@
   border-radius: 5px;
   padding: 5px;
 }
+button{
+  background-color: #ffffff;
+}
 input[type="text"] {
   border: none;
   flex: 1;
@@ -27,32 +30,32 @@ input[type="text"] {
   padding: 1%;
   margin-right:10vw;
 }
-.nav-filter{
-  padding:0.5vh 1vw 0.5vh 1vw;
-  font-size: 15px;
-  background-color: #ffdd95;
-  color: black;
-  font-family: Poppins,Arial;
-  font-weight: 700;
-  margin-left: 3vw;
-}
-.nav-filter :hover{
-  background-color: #ffffff;
-}
-.nav-lang{
-  margin-top: 0.5vh;
-  margin-left:15vw;
-  cursor: pointer;
-  color:black;
-  .left{
-    border-radius: 5px 0 0 5px;
-    width: 4vw;
-    padding: 0;
-  }
-  .right{
-    border-radius: 0 5px 5px 0;
-    width: 4vw;
-    padding: 0;
-  }
+// .nav-filter{
+//   padding:0.5vh 1vw 0.5vh 1vw;
+//   font-size: 15px;
+//   background-color: #ffdd95;
+//   color: black;
+//   font-family: Poppins,Arial;
+//   font-weight: 700;
+//   margin-left: 3vw;
+// }
+// .nav-filter :hover{
+//   background-color: #ffffff;
+// }
+// .nav-lang{
+//   margin-top: 0.5vh;
+//   margin-left:15vw;
+//   cursor: pointer;
+//   color:black;
+//   .left{
+//     border-radius: 5px 0 0 5px;
+//     width: 4vw;
+//     padding: 0;
+//   }
+//   .right{
+//     border-radius: 0 5px 5px 0;
+//     width: 4vw;
+//     padding: 0;
+//   }
   
-}
+// }

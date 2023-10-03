@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { DataService } from './data.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { provideMockStore } from '@ngrx/store/testing';

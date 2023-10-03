@@ -1,44 +1,50 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { CardComponent } from './card.component';
+
+import { DetailsComponent } from '../details/details.component';
 import { DataService } from 'src/app/services/data.service';
 import { Store } from '@ngrx/store';
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
-describe('CardComponent', () => {
-  let service: DataService;
-  let store:Store;
-  let component: CardComponent;
-  let fixture: ComponentFixture<CardComponent>;
+describe('DetailsComponent', () => {
+  let component: DetailsComponent;
+  let service:DataService;
+  let store: jasmine.SpyObj<Store>;
+  let fixture: ComponentFixture<DetailsComponent>;
+  let route: jasmine.SpyObj<ActivatedRoute>;
+
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [CardComponent],
-      imports: [HttpClientTestingModule],
-      providers: [
-      { provide: DataService, useValue:service },
-      { provide: Store, useValue: store }
-    ]
-      
+    store = jasmine.createSpyObj(Store, ['select']);
+    route = jasmine.createSpyObj('ActivatedRoute', [], {
+      snapshot: { paramMap: { get: (param: string) => null } },
     });
-    fixture = TestBed.createComponent(CardComponent);
+    TestBed.configureTestingModule({
+      declarations: [DetailsComponent],
+      providers:[{provide:DataService,useValue:service},{provide:Store,useValue:store},{provide:ActivatedRoute,useValue:route}]
+    });
+    fixture = TestBed.createComponent(DetailsComponent);
     component = fixture.componentInstance;
-    store = TestBed.inject(Store);
-    service = TestBed.inject(DataService);
-    fixture.detectChanges();
+    fixture.detectChanges()
   });
 
-  it('should be created', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should get data from store and show as a carousel', () => {
-    const mockData = {};
-    component.ngOnInit();
-
-    spyOn(component['store'], 'select').and.returnValue({
-      subscribe: (callback: Function) => callback(mockData),
-    } as any);
+  it('should extract a amine data based on Id', () => {
+    const mockData = {
+      images: {
+        jpg: {
+          large_image_url: 'test_url'
+        }
+      },
+      // other properties...
+    };
     service.getAnimeData();
-    
-    // expect(component.data).toEqual(mockData);
+    store.select.and.returnValue(of({ data: mockData }));
+    component.ngOnInit();
+    expect(service.getAnimeData).toHaveBeenCalled();
+    expect(component.details).toEqual(mockData);
   });
+  
 
 });

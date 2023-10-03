@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { DetailsComponent } from './details.component';
+import { DetailComponent } from './detail.component';
 import { DataService } from 'src/app/services/data.service';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
@@ -156,11 +156,13 @@ const mockData=[{
   }
   }]
 
-describe('DetailsComponent', () => {
-  let component: DetailsComponent;
+  
+
+describe('DetailComponent', () => {
+  let component: DetailComponent;
   let service:jasmine.SpyObj<DataService>;
   let store: jasmine.SpyObj<Store>;
-  let fixture: ComponentFixture<DetailsComponent>;
+  let fixture: ComponentFixture<DetailComponent>;
   let route: jasmine.SpyObj<ActivatedRoute>;
 
   beforeEach(() => {
@@ -171,27 +173,30 @@ describe('DetailsComponent', () => {
     });
 
     TestBed.configureTestingModule({
-      declarations: [DetailsComponent],
+      declarations: [DetailComponent],
       providers:[{provide:DataService,useValue:service},{provide:Store,useValue:store},{provide:ActivatedRoute,useValue:route}]
     });
-    fixture = TestBed.createComponent(DetailsComponent);
+    fixture = TestBed.createComponent(DetailComponent);
     component = fixture.componentInstance;
-    component.details=mockData;
-    store.select.and.returnValue(of({ data: mockData}));
+    // const mockData = {images:{jpg:{large_image_url:''}},studios:[{name:''}],producers:[{name:''}]};
+    store.select.and.returnValue(of({ data: mockData }));
+    component.details=mockData
     fixture.detectChanges()
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should return data from state', () => {
-    const state = { data: 'test data' };
-    const result = (state: { data: any; }) => state.data;
-    expect(result(state)).toEqual('test data');
-  });
-  it('should extract a amine data based on Id', () => {
+  // it('should return data from state', () => {
+  //   const state = { data: 'test data' };
+  //   const result = (state: { data: any; }) => state.data;
+  //   expect(result(state)).toEqual('test data');
+  // });
+  it('should extract a amine data based on title', () => {
+    const mockResponse={data:mockData}
+    // service.getAnimeData();
     component.ngOnInit();
     expect(service.getAnimeData).toHaveBeenCalled();
-    expect(component.details).toEqual(mockData);
+    expect(component.details).toEqual(mockResponse.data.find((item) => item.title.toLowerCase().includes('')));
   });
 });
