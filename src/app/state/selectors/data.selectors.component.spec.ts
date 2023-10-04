@@ -1,90 +1,3 @@
-// import { TestBed } from '@angular/core/testing';
-// import { Store, StoreModule } from '@ngrx/store';
-// import { selectMyDataState, selectMyData } from 'src/app/state/selectors/data.selectors'; // Update this import path with your actual file path
-
-// describe('NgRx Selectors', () => {
-//   let store: Store<any>;
-
-//   beforeEach(() => {
-//     TestBed.configureTestingModule({
-//       imports: [StoreModule.forRoot({})], // Provide a mock store state
-//     });
-
-//     store = TestBed.inject(Store);
-//   });
-
-//   // it('should select the MyData state', () => {
-//   //   let result;
-
-//   //   store.select(selectMyDataState).subscribe((value) => {
-//   //     result = value;
-//   //   });
-
-//   //   expect(result).toEqual({}); // Provide the expected initial state
-//   // });
-
-//   it('should select the data property from MyData state', () => {
-//     const myDataState = {
-//       data: [1, 2, 3], // Replace with your test data
-//     };
-
-//     let result;
-
-//     store.select(selectMyData).subscribe((value) => {
-//       result = value;
-//     });
-
-//     // store.setState({ myData: myDataState }); // Set the state
-
-//     // expect(result).toEqual();
-//   });
-// });
-
-// import { TestBed } from '@angular/core/testing';
-// import { Store, StoreModule } from '@ngrx/store';
-// import { selectMyData,selectMyDataState } from './data.selectors';
-
-// describe('NgRx Selectors', () => {
-//   let store: Store<any>;
-
-//   beforeEach(() => {
-//     TestBed.configureTestingModule({
-//       imports: [
-//         // Import the NgRx StoreModule with an initial state
-//         StoreModule.forRoot({ }),
-//       ],
-//     });
-
-//     store = TestBed.inject(Store);
-//   });
-
-//   it('should select the myData state', () => {
-//     let selectedData: any;
-
-//     // Select the myData state using the selectMyDataState selector
-//     store.select(selectMyDataState).subscribe((data) => {
-//       selectedData = data;
-//     });
-
-//     // Verify that the selected data matches the initial state
-//     expect(selectedData).toEqual({ data: 'testData' }); // Replace with your actual initial state
-
-//     // You can also test other properties of the selected state as needed
-//   });
-
-//   it('should select the data property from myData state', () => {
-//     let selectedData: any;
-
-//     // Select the 'data' property from the myData state using the selectMyData selector
-//     store.select(selectMyData).subscribe((data) => {
-//       selectedData = data;
-//     });
-
-//     // Verify that the selected data matches the 'data' property from the initial state
-//     expect(selectedData).toEqual('testData'); // Replace with your actual initial state
-//   });
-// });
-
 import { selectMyDataState, selectMyData } from './data.selectors';
 
  
@@ -400,13 +313,8 @@ describe('MyData Selectors', () => {
       },
 
     };
-
     const selectedState = selectMyDataState.projector(state);
-
-    
-
     expect(selectedState).toEqual(state.myData);
-
   });
 
  
@@ -720,15 +628,8 @@ describe('MyData Selectors', () => {
       },
 
     };
-
- 
-
     const selectedData = selectMyData.projector(state);
-
- 
-
     expect(selectedData).toEqual(state.myData.data);
-
   });
 
 });
