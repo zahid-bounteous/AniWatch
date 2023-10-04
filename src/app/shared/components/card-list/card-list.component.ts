@@ -9,26 +9,6 @@ import { selectMyData } from 'src/app/state/selectors/data.selectors';
   styleUrls: ['./card-list.component.scss']
 })
 export class CardListComponent {
-  hasResponse(hasResponse: any) {
-    throw new Error('Method not implemented.');
-  }
-  duration(duration: any) {
-    throw new Error('Method not implemented.');
-  }
-  score(score: any) {
-    throw new Error('Method not implemented.');
-  }
-  type(type: any) {
-    throw new Error('Method not implemented.');
-  }
-  image: any;
-  title(title: any) {
-    throw new Error('Method not implemented.');
-  }
-  rating(rating: any) {
-    throw new Error('Method not implemented.');
-  }
-
   public cardList :any;
   constructor(private api :DataService,private store: Store){}
   ngOnInit():void{

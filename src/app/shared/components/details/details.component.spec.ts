@@ -167,7 +167,7 @@ describe('DetailsComponent', () => {
     service=jasmine.createSpyObj(DataService,['getAnimeData'])
     store = jasmine.createSpyObj(Store, ['select']);
     route = jasmine.createSpyObj('ActivatedRoute', [], {
-    snapshot: { paramMap: { get: (param: string) => 'mock parameter' } },
+    snapshot: { paramMap: { get: (param: string) => '1' } },
     });
 
     TestBed.configureTestingModule({
@@ -176,7 +176,6 @@ describe('DetailsComponent', () => {
     });
     fixture = TestBed.createComponent(DetailsComponent);
     component = fixture.componentInstance;
-    component.details=mockData;
     store.select.and.returnValue(of({ data: mockData}));
     fixture.detectChanges()
   });
@@ -184,14 +183,10 @@ describe('DetailsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should return data from state', () => {
-    const state = { data: 'test data' };
-    const result = (state: { data: any; }) => state.data;
-    expect(result(state)).toEqual('test data');
-  });
-  it('should extract a amine data based on Id', () => {
+
+  it('should extract a amine data based on ID', () => {
     component.ngOnInit();
     expect(service.getAnimeData).toHaveBeenCalled();
-    expect(component.details).toEqual(mockData);
+    expect(component.details).toEqual(mockData[0]);
   });
 });
